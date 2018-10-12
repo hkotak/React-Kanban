@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css?family=Concert+One|Fredoka+One|Pacifico");
+/* font-family: 'Pacifico', cursive;
+font-family: 'Concert One', cursive;
+font-family: 'Fredoka One', cursive; */
+
+body {
+  background-color: black;
+  /* border: white 5px solid; */
+  padding: 8px;
+}
+
+.App {
+  color: white;
+  background-color: black;
+  height: 900px;
+}
+
+.App-header {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 23px;
+  font-family: 'Pacifico', cursive;
+  border: white dashed 5px;
+  margin: 0px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  height: 90 px;
+}
+
+#appName {
+  margin: 0;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.addCard {
+  position: absolute;
+  left: 90%;
+  float: right;
+  align-self: flex-end;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.addCard:hover {
+  color: red;
+}
+
+.colName {
+  font-family: 'Fredoka One', cursive;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.column {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.inQueue {
+  background-color: lime;
+}
+.inProgress {
+  background-color: lightblue;
+}
+.done {
+  background-color: lightsalmon;
+}
+
+#cards {
+  border-radius: 10px;
+  margin: 0px 10px 20px 10px;
+  padding: 10px;
+  color: black;
+  height: 100px;
+
+}
+
+.f-col {
+  /* border: white 1px solid; */
+  display: flex;
+  justify-content: start;;
+  flex-direction: column;
+  text-align: left;
+}
+
+.f-row {
+  /* border: black 1px solid; */
+  text-align: right;
+}
+
+.title{
+  font-size: 23px;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+.priority {
+  font-family: 'Concert One', cursive;
+}
+
+.createdBy {
+  font-family: 'Concert One', cursive;
+}
+
+.assignedTo {
+  font-family: 'Concert One', cursive;
+  font-size: 15px;
+  /* text-align: right; */
+}
+
+.edit {
+  font-family: 'Concert One', cursive;
+  margin-right: 15px;
+  color: darkslategray;
+  cursor: pointer;
+  transition: 1s;
+}
+.edit:hover {
+  color: red;
+}
+
+.delete {
+  font-family: 'Concert One', cursive;
+  color: darkslategray;
+  cursor: pointer;
+  transition: 1s;
+}
+.delete:hover {
+  color: red;
+
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .app {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+
+/* Tablet Landscape */
+/* @media screen and (max-width: 1060px) {
+  .app { width:67%; }
+  #primary { width:67%; }
+  #secondary { width:30%; margin-left:3%;}  
+} */
