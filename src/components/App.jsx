@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 // import axios from 'axios';
 // import { getCardsFromDB, deleteCardsFromDB } from '../db/inventory.jsx'
 
-import InQueue from './InQueue.jsx';
+// import InQueue from './InQueue.jsx';
 import InProgress from './InProgress.jsx';
-import Done from './Done.jsx';
+// import Done from './Done.jsx';
 import CardForm from './CardForm';
 
 import { getAllCards } from '../actions/actions.js';
@@ -36,20 +36,20 @@ class App extends Component {
           </header>
 
           <section className="container">
-            <div className="column">
+            {/* <div className="column">
               <h1 className="colName">IN QUEUE</h1>
               <Route component={() => <InQueue />} />
-            </div>
+            </div> */}
 
             <div className="column">
               <h1 className="colName">IN PROGRESS</h1>
               <Route component={() => <InProgress />} />
             </div>
 
-            <div className="column">
+            {/* <div className="column">
               <h1 className="colName">DONE</h1>
               <Route component={() => <Done />} />
-            </div>
+            </div> */}
           </section>
         </div>
       </Router>

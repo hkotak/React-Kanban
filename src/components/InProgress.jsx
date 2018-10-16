@@ -16,8 +16,6 @@ const InProgress = (props) => {
     </>
   )
 
-
-
   // return props.cards.filter(card => card.status === 'in progress').map(card =>
   //   <div id="cards" className="inProgress" key={card.Card_ID}>
   //     <div className="f-col">
@@ -36,4 +34,4 @@ const InProgress = (props) => {
   //   </div>)
 }
 
-export default connect((InProgress));
+export default connect(InProgress);
