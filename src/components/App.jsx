@@ -3,7 +3,6 @@ import logo from '../logo.svg';
 import '../App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-// import { getCardsFromDB, deleteCardsFromDB } from '../db/inventory.jsx'
 
 import InQueue from './InQueue.jsx';
 import InProgress from './InProgress.jsx';
@@ -11,7 +10,7 @@ import Done from './Done.jsx';
 import CardForm from './CardForm';
 
 import { connect } from 'react-redux';
-import { getAllCards } from '../actions/actions.js';
+import { getAllCards, deleteTask } from '../actions/actions.js';
 
 
 
@@ -33,12 +32,12 @@ class App extends Component {
 
 
   componentDidMount() {
-    console.log('COMPONENT PROPS: ', this.props);
-    console.log('******************')
+    // console.log('COMPONENT PROPS: ', this.props);
+    // console.log('******************')
     this.props.dispatch(getAllCards());
   }
 
-
+  //ADD CARD FUNCTION 
   addCard = (newTask) => {
     axios
       .post('/newTask', newTask)
@@ -50,11 +49,16 @@ class App extends Component {
       })
   }
 
+  //DELETE CARD FUNCTION
+  deleteCard = (card) => {
+    console.log('APP.JS DELETE IS FIRING')
+    this.props.dispatch(deleteTask(card));
+  }
 
   //~~~~~~~~~RENDER PAGE~~~~~~~~~//
   render() {
     const { propsOfCards } = this.props;
-    console.log('RENDER PROPS: ', propsOfCards);
+    // console.log('RENDER PROPS: ', propsOfCards);
     return (
       <div className="App">
         <header className="App-header">
@@ -69,17 +73,17 @@ class App extends Component {
             <section className="container">
               <div className="column">
                 <h1 className="colName">IN QUEUE</h1>
-                <div><InQueue props={propsOfCards} /></div>
+                <div><InQueue props={propsOfCards} deleteFunc={this.deleteCard} /></div>
               </div>
 
               <div className="column">
                 <h1 className="colName">IN PROGRESS</h1>
-                <div><InProgress props={propsOfCards} /></div>
+                <div><InProgress props={propsOfCards} deleteFunc={this.deleteCard} /></div>
               </div>
 
               <div className="column">
                 <h1 className="colName">DONE</h1>
-                <div><Done props={propsOfCards} /></div>
+                <div><Done props={propsOfCards} deleteFunc={this.deleteCard} /></div>
               </div>
             </section>
 

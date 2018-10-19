@@ -24,7 +24,7 @@ app.get('/cards', (req, res) => {
     })
 })
 
-//POST - will pose new cards created by the user
+//POST - will post new cards created by the user
 app.post('/addTask', (req, res) => {
   console.log('WHATTTT', req.body)
 
@@ -49,6 +49,30 @@ app.post('/addTask', (req, res) => {
     .catch(err => {
       console.log('error', err)
     })
+})
+
+//DELETE - will delete the specified card
+app.delete('/:id', (req, res) => {
+  console.log(req.body);
+  const id = req.body.card
+  console.log('SERVER - DELETE: CARDID: ', id)
+
+  Cards
+    .where({ id })
+    .destroy()
+    .then(() => {
+      return Cards.fetchAll()
+    })
+    .then(cards => {
+      res.json(cards.serialize())
+    })
+    .catch(err => {
+      console.log('ERROR IN SERVER DELETE: ', err)
+    })
+
+
+
+
 })
 
 

@@ -11,7 +11,7 @@ const InQueue = (props) => {
         <div className="createdBy">Assigned by: {card.created_by} </div>
         <div className="changes">
           <span className="edit">Edit</span>
-          <span className="delete" onClick={() => props.deleteCardById(card.id)}>Delete</span>
+          <span className="delete" onClick={() => props.deleteFunc(card.id)}>Delete</span>
         </div>
       </div>
       <div className="f-row">

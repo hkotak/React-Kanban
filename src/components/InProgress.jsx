@@ -1,4 +1,5 @@
 import React from 'react';
+
 // import Card from './Cards.jsx'
 
 const InProgress = (props) => {
@@ -11,7 +12,12 @@ const InProgress = (props) => {
         <div className="createdBy">Assigned by: {card.created_by} </div>
         <div className="changes">
           <span className="edit">Edit</span>
-          <span className="delete" onClick={() => props.deleteCardById(card.id)}>Delete</span>
+          <span className="delete" onClick={() => props.deleteFunc(card.id)}>Delete</span>
+
+          {/* <span className="delete" onClick={() => this.props.dispatch({
+            type: 'DELETE_CARD', id: props.card.id
+          })}>Delete</span> */}
+
         </div>
       </div>
       <div className="f-row">

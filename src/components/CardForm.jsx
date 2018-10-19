@@ -16,14 +16,14 @@ class CardForm extends Component {
     }
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  handleSubmit = (event) => {
+    event.preventDefault();
     this.props.dispatch(addCard(this.state))
   }
 
-  handleChange = (e) => {
-    e.preventDefault();
-    const { name, value } = e.target;
+  handleChange = (event) => {
+    event.preventDefault();
+    const { name, value } = event.target;
     this.setState({
       [name]: value
     })
