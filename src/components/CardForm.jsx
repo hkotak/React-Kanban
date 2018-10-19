@@ -1,59 +1,32 @@
-// npm install react-router-dom
-
 import React, { Component } from 'react';
-import { addCardsFromDB } from '../db/inventory.jsx'
-import '../App.css';
+import { addCard } from '../actions/actions.js';
+import { connect } from 'react-redux';
 
 
 class CardForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      Title: null,
-      Body: null,
-      Priority: null,
-      Status: null,
-      Created_By: null,
-      Assigned_To: null,
+      title: null,
+      body: null,
+      priority_id: 'low',
+      status_id: 'in queue',
+      created_by: null,
+      assigned_to: null,
     }
-    this.addCards = this.addCards.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  addCards = (card) => {
-    addCardsFromDB(card)
-      .then(cards => {
-        if (cards) {
-          this.setState({ cards })
-        }
-      })
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.dispatch(addCard(this.state))
   }
 
-  handleChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const Title = target.Title;
-    const Body = target.Body;
-    const Priority = target.Priority;
-    const Status = target.Status;
-    const Created_By = target.Created_By;
-    const Assigned_To = target.Assigned_To;
-
+  handleChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
     this.setState({
-      [Title]: value,
-      [Body]: value,
-      [Priority]: value,
-      [Status]: value,
-      [Created_By]: value,
-      [Assigned_To]: value
+      [name]: value
     })
-  }
-
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.addCards(this.state)
   }
 
   render() {
@@ -61,30 +34,30 @@ class CardForm extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label> Title:
-          <input onChange={this.handleChange} name="Title" type="text" />
+          <input onChange={this.handleChange} name="title" type="text" />
           </label>
           <label> Body:
-          <input onChange={this.handleChange} name="Body" type="text" />
+          <input onChange={this.handleChange} name="body" type="text" />
           </label>
           <label> Priority:
-          <select onChange={this.handleChange} name="Priority">
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="one">High</option>
+          <select onChange={this.handleChange} name="priority_id">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </select>
           </label>
           <label> Status:
-          <select onChange={this.handleChange} name="Status">
-              <option value="In Queue">In Queue</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Done">Done</option>
+          <select onChange={this.handleChange} name="status_id">
+              <option value="in queue">In Queue</option>
+              <option value="in progress">In Progress</option>
+              <option value="done">Done</option>
             </select>
           </label>
           <label> Created By:
-          <input onChange={this.handleChange} name="Created_By" type="text" />
+          <input onChange={this.handleChange} name="created_by" type="text" />
           </label>
           <label> Assigned To:
-          <input onChange={this.handleChange} name="Assigned_To" type="text" />
+          <input onChange={this.handleChange} name="assigned_to" type="text" />
           </label>
           <input type="submit" value="Submit" />
         </form>
@@ -93,4 +66,4 @@ class CardForm extends Component {
   }
 }
 
-export default CardForm
+export default connect()(CardForm)

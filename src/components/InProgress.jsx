@@ -1,37 +1,24 @@
 import React from 'react';
-import Card from './Cards.jsx'
-import { connect } from 'react-redux';
+// import Card from './Cards.jsx'
 
 const InProgress = (props) => {
-  return (
-    <>
-      {/* {props.cards.filter(card => card.status === 'in progress').map(card => */}
-      {props.cards.map(card =>
-        <Card
-          key={card.id}
-          title={card.title}
-        // priority_id={card.priority_id}
-        // created_by={card.created_by}
-        />)}
-    </>
-  )
+  return props.props.filter(card => card.status_id === 'in progress').map(card =>
+    <div id="cards" className="inProgress" key={card.id}>
 
-  // return props.cards.filter(card => card.status === 'in progress').map(card =>
-  //   <div id="cards" className="inProgress" key={card.Card_ID}>
-  //     <div className="f-col">
-  //       <div className="title"> {card.Title} </div>
-  //       <div className="priority">Priority: {card.Priority} </div>
-  //       <div className="createdBy">Assigned by: {card.Created_By} </div>
-  //       <div className="changes">
-  //         <span className="edit">Edit</span>
-  //         <span className="delete" onClick={() => props.deleteCardById(card.Card_ID)}>Delete</span>
-  //       </div>
-  //     </div>
-  //     <div className="f-row">
-  //       <div className="assignedTo"> {card.Assigned_To} </div>
-  //     </div>
+      <div className="f-col">
+        <div className="title"> {card.title} </div>
+        <div className="priority">Priority: {card.priority_id} </div>
+        <div className="createdBy">Assigned by: {card.created_by} </div>
+        <div className="changes">
+          <span className="edit">Edit</span>
+          <span className="delete" onClick={() => props.deleteCardById(card.id)}>Delete</span>
+        </div>
+      </div>
+      <div className="f-row">
+        <div className="assignedTo"> {card.assigned_to} </div>
+      </div>
 
-  //   </div>)
+    </div>)
 }
+export default InProgress;
 
-export default connect(InProgress);
