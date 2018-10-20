@@ -10,7 +10,7 @@ import Done from './Done.jsx';
 import CardForm from './CardForm';
 
 import { connect } from 'react-redux';
-import { getAllCards, deleteTask } from '../actions/actions.js';
+import { getAllCards, deleteTask, editTask } from '../actions/actions.js';
 
 
 

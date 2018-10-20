@@ -1,4 +1,4 @@
-import { GET_ALL_CARDS, ADD_CARD, DELETE_CARD } from '../actions/actions.js'
+import { GET_ALL_CARDS, ADD_CARD, EDIT_CARD, DELETE_CARD } from '../actions/actions.js'
 
 const cardReducer = (state = [], action) => {
 
@@ -9,6 +9,9 @@ const cardReducer = (state = [], action) => {
 
     case ADD_CARD:
       return [...state, action.payload]
+
+    case EDIT_CARD:
+      return action.payload
 
     case DELETE_CARD:
       return [...action.payload]
