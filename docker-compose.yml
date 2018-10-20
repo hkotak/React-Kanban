@@ -1,0 +1,5 @@
+version: '3'
+services:
+  simplicity-redefined:
+    build: .
+    image: hkotak93/simplicity-redefined:local
